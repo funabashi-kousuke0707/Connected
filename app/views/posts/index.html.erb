@@ -8,6 +8,8 @@
     投稿者:<%= p.name %>
   </p>
   <p>
+    <%= link_to post_path(p) do%>
     タイトル:<%= p.title %>
+    <% end %>
   </p>
 <% end%>

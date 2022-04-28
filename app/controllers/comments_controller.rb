@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
   
   def new
-    @comment = Comment.new
+    @comment = Comment.new(comment_params)
+    binding.pry
   end
 
   def create

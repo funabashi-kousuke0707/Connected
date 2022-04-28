@@ -1,0 +1,15 @@
+<h1> post#index </h1>
+<%= link_to new_post_path do %>
+  投稿する
+<% end %>
+
+<% @posts.each do |p|%>
+  <p>
+    投稿者:<%= p.name %>
+  </p>
+  <p>
+    <%= link_to post_path(p) do%>
+    タイトル:<%= p.title %>
+    <% end %>
+  </p>
+<% end%>

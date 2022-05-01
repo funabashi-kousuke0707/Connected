@@ -1,4 +1,9 @@
 <h1>posts#show</h1>
+<%= form_with model:[@post,@comment] do |f|%>
+  <%= f.text_field :name %>
+  <%= f.text_field :text %>
+  <%= f.submit %>
+<% end %>
 
 <h2> <%= @post.title%> </h2>
 <p> <%= @post.text %> </p>

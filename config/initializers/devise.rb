@@ -83,7 +83,6 @@ Devise.setup do |config|
 
   # If 401 status code should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
-
   # The realm used in Http Basic Authentication. 'Application' by default.
   # config.http_authentication_realm = 'Application'
 
@@ -244,7 +243,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).

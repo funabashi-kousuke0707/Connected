@@ -1,0 +1,9 @@
+<h1>comment#new<h1>
+
+<%= form_with model: @comment ,method: :post do |f| %>
+  <div class= "form">ユーザーネーム：</div>
+  <%= f.text_field :name %>
+  <div class="form">タイトル：</div>
+  <%= f.text_field :text %>
+  <%= f.submit %>
+<% end %>

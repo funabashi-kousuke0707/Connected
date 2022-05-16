@@ -1,4 +1,18 @@
 <h1> post#index </h1>
+
+<% if user_signed_in? %>
+  <%= link_to destroy_user_session_path , method: :delete do%>
+    <p>ログアウト</p>
+  <% end %>
+<% else %>
+  <%= link_to new_user_registration_path do%>
+    <p>新規登録</p>
+  <% end %>
+  <%= link_to new_user_session_path do%>
+    <p>ログイン</p>
+  <% end %>
+<% end %>
+
 <%= link_to new_post_path do %>
   投稿する
 <% end %>

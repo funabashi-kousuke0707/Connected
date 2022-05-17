@@ -17,6 +17,11 @@
   投稿する
 <% end %>
 
+<%= link_to new_user_post_path do %>
+  投稿する
+<% end %>
+
+
 <% @posts.each do |p|%>
   <p>
     投稿者:<%= p.name %>

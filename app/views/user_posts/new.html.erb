@@ -1,0 +1,11 @@
+<h1>UserPost#new</h1>
+
+<%= form_with model: @user_post do |f| %>
+  <div class= "form">ユーザーネーム：</div>
+  <%= f.text_field :name, value: @user %>
+  <div class="form">タイトル：</div>
+  <%= f.text_field :title %>
+  <div class="form">テキスト：</div>
+  <%= f.text_field :text %>
+  <%= f.submit %>
+<% end %>

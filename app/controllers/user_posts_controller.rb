@@ -1,6 +1,7 @@
 class UserPostsController < ApplicationController
   def new
     @user_post = UserPost.new
+    @user = current_user.name
   end
 
   def create
@@ -10,7 +11,7 @@ class UserPostsController < ApplicationController
 
   private
     def user_post_params
-      params.require(:user_post).permit(:title,rails generate migration AddDetailsToTitles price:integer author:string:text).merge(user_id current_user.id)
+      params.require(:user_post).permit(:title,:text,:name).merge(user_id: current_user.id)
     end
 
 end

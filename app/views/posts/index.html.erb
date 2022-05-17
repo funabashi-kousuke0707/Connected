@@ -13,14 +13,16 @@
   <% end %>
 <% end %>
 
-<%= link_to new_post_path do %>
+<%# 投稿先のテーブルをログインの有無で切り替えたいため %>
+<% if user_signed_in? %>
+  <%= link_to new_user_post_path do %>
+    投稿する
+  <% end %>
+<% else %>
+  <%= link_to new_post_path do %>
   投稿する
+  <% end %>
 <% end %>
-
-<%= link_to new_user_post_path do %>
-  投稿する
-<% end %>
-
 
 <% @posts.each do |p|%>
   <p>

@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.all
-    # @user_posts = UserPost.all
-    # @mixed = (@posts + @user_posts).sort_by {|record| record.created_at}.reverse!
+    @user_posts = UserPost.all
+    @mixed = (@posts + @user_posts).sort_by {|record| record.created_at}.reverse!
   end
 
   def new

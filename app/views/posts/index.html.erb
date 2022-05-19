@@ -32,3 +32,15 @@
     sakujoy
   <% end %>
 <% end%>
+
+<% @user_posts.each do |p|%>
+  <p>
+    投稿者:<%= p.name %>
+  </p>
+  <%= link_to user_post_path(p),method: :delete do %>
+    sakujoy
+  <% end %>
+<% end%>
+
+
+

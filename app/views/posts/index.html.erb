@@ -1,4 +1,4 @@
-<h1> post#index </h1>
+<h1> Post#index </h1>
 
 <% if user_signed_in? %>
   <%= link_to destroy_user_session_path , method: :delete do%>
@@ -13,17 +13,34 @@
   <% end %>
 <% end %>
 
-<%= link_to new_post_path do %>
-  投稿する
+<%# 投稿先のテーブルをログインの有無で切り替えたいため %>
+<% if user_signed_in? %>
+  <%= link_to new_user_post_path do %>
+    投稿する
+  <% end %>
+<% else %>
+  <%= link_to new_post_path do %>
+    投稿する
+  <% end %>
 <% end %>
 
 <% @posts.each do |p|%>
   <p>
     投稿者:<%= p.name %>
   </p>
-  <p>
-    <%= link_to post_path(p) do%>
-    タイトル:<%= p.title %>
-    <% end %>
-  </p>
+  <%= link_to post_path(p),method: :delete do %>
+    sakujoy
+  <% end %>
 <% end%>
+
+<% @user_posts.each do |p|%>
+  <p>
+    投稿者:<%= p.name %>
+  </p>
+  <%= link_to user_post_path(p),method: :delete do %>
+    sakujoy
+  <% end %>
+<% end%>
+
+
+

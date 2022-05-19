@@ -24,20 +24,21 @@
   <% end %>
 <% end %>
 
-<% @posts.each do |p|%>
-  <p>
-    投稿者:<%= p.name %>
-  </p>
-  <%= link_to post_path(p),method: :delete do %>
-    削除
-  <% end %>
-<% end%>
-
-<% @user_posts.each do |p|%>
-  <p>
-    投稿者:<%= p.name %>
-  </p>
-  <%= link_to user_post_path(p),method: :delete do %>
-    削除
+<% @mixed.each do |p|%>
+  <% if p.user_id.present? %>
+    <p>
+      投稿者:<%= p.name %>
+    </p>
+      <%= link_to user_post_path(p),method: :delete do %>
+        削除
+      <% end %>
+  <% else %>
+    <p>
+      投稿者:<%= p.name %>
+    </p>
+    <%= link_to post_path(p),method: :delete do %>
+      削除
+    <% end %>
   <% end %>
 <% end %>
+

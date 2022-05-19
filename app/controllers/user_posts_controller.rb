@@ -12,6 +12,7 @@ class UserPostsController < ApplicationController
   def destroy
     @user_post = UserPost.find(params[:id])
     @user_post.destroy
+    redirect_to root_path
   end
 
 

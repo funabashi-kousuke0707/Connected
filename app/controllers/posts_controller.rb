@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.all
+    @user_posts = UserPost.all
+    @mixed = (@posts + @user_posts).sort_by {|record| record.created_at}.reverse!
   end
 
   def new
@@ -17,6 +19,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comment
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
   end
 
   private

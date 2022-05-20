@@ -1,10 +1,23 @@
 <h1>posts#show</h1>
 <%= link_to root_path do %> ホーム <% end %>
-<%= form_with model:[@post,@comment] do |f|%>
-  <%= f.text_field :name %>
-  <%= f.text_field :text %>
-  <%= f.submit %>
+<%# ログインの有無でコメントの保存先が変わる機構 %>
+<% if user_signed_in? %>
+  <%# コメントにuser_idを紐づけることができるUserCommentモデルへ投稿 %>
+  <%= form_with model:[@post,@user_comment] do |f|%>
+    <%= f.text_field :name %>
+    <%= f.text_field :text %>
+    <%= f.submit %>
+  <% end %>
+<% else %>
+<%# Commentモデルへ投稿 %>
+  <%= form_with model:[@post,@comment] do |f|%>
+    <%= f.text_field :name %>
+    <%= f.text_field :text %>
+    <%= f.submit %>
+  <% end %>
 <% end %>
+<%# end %>
+
 
 <div class="title">投稿内容</div>
 <p> <%= @post.title%> </p>

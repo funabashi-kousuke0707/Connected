@@ -1,5 +1,5 @@
 <h1> Post#index </h1>
-
+<%# ログイン/ログアウト機構 %>
 <% if user_signed_in? %>
   <%= link_to destroy_user_session_path , method: :delete do%>
     <p>ログアウト</p>
@@ -12,8 +12,9 @@
     <p>ログイン</p>
   <% end %>
 <% end %>
+<%# end %>
 
-<%# 投稿先のテーブルをログインの有無で切り替えたいため %>
+<%# 投稿フォーム %>
 <% if user_signed_in? %>
   <%= link_to new_user_post_path do %>
     投稿する
@@ -23,9 +24,12 @@
     投稿する
   <% end %>
 <% end %>
+<%# end  %>
 
+<%# 投稿物一覧機構 %>
 <% @mixed.each do |p|%>
   <% if p.user_id.present? %>
+    <%# ログインユーザーが投稿したオブジェクト %>
     <p>
       投稿者:<%= p.name %>
     </p>
@@ -38,6 +42,7 @@
         削除
       <% end %>
   <% else %>
+    <%# 未ログインユーザーが投稿したオブジェクト %>
     <p>
       投稿者:<%= p.name %>
     </p>
@@ -52,4 +57,4 @@
     
   <% end %>
 <% end %>
-
+<%# end %>

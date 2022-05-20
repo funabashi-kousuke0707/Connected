@@ -1,0 +1,22 @@
+<h1>UserPost#show</h1>
+
+<%= link_to root_path do %> ホーム <% end %>
+<%= form_with model:[@post,@user_comment] do |f|%>
+  <%= f.text_field :name %>
+  <%= f.text_field :text %>
+  <%= f.submit %>
+<% end %>
+
+<div class="title">投稿内容</div>
+<p> <%= @post.title%> </p>
+<p> <%= @post.text %> </p>
+
+
+<% @comments.each do |c| %>
+  <div>
+    <%= c.name %>
+  </div>
+  <div>
+    <%= c.text %>
+  </div>
+<% end %>

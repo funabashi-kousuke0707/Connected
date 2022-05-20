@@ -6,8 +6,8 @@ class UserPostsController < ApplicationController
 
   # def show
   #   @user_post = UserPost.find(params[:id])
-  #   @comment = Comment.new
-  #   @comments = @post.comment
+  #   @user_comment = UserComment.new(user_post_params)
+  #   # @comments = @post.comment
   # end
 
   def create

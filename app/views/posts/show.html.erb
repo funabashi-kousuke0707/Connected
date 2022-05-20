@@ -25,11 +25,11 @@
 <p> <%= @post.text %> </p>
 
 
-<% @comments.each do |c| %>
+<% @mixed.each do |mixed| %>
   <div>
-    <%= c.name %>
+    <%= mixed.name %>
   </div>
   <div>
-    <%= c.text %>
+    <%= mixed.text %>
   </div>
 <% end %>

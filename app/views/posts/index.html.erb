@@ -29,6 +29,11 @@
     <p>
       投稿者:<%= p.name %>
     </p>
+    <div>
+      <%= link_to user_post_path(p) do %>
+        <%= p.title %>
+      <% end %>
+    </div>
       <%= link_to user_post_path(p),method: :delete do %>
         削除
       <% end %>

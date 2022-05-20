@@ -4,6 +4,12 @@ class UserPostsController < ApplicationController
     @user = current_user.name
   end
 
+  # def show
+  #   @user_post = UserPost.find(params[:id])
+  #   @comment = Comment.new
+  #   @comments = @post.comment
+  # end
+
   def create
     UserPost.create(user_post_params)
     redirect_to root_path

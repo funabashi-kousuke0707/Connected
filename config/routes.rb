@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :user_posts
   resources :posts do
     resources :comments, only:[:create]
+    resources :user_comments,only:[:create]
   end
 end

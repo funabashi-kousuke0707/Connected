@@ -1,5 +1,6 @@
 <h1>posts#show</h1>
 <%= link_to root_path do %> ホーム <% end %>
+
 <%# ログインの有無でコメントの保存先が変わる機構 %>
 <% if user_signed_in? %>
   <%# コメントにuser_idを紐づけることができるUserCommentモデルへ投稿 %>
@@ -9,7 +10,7 @@
     <%= f.submit %>
   <% end %>
 <% else %>
-<%# Commentモデルへ投稿 %>
+  <%# Commentモデルへ投稿 %>
   <%= form_with model:[@post,@comment] do |f|%>
     <%= f.text_field :name %>
     <%= f.text_field :text %>

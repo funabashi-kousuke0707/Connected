@@ -5,15 +5,15 @@
 <% if user_signed_in? %>
   <%# コメントにuser_idを紐づけることができるUserCommentモデルへ投稿 %>
   <%= form_with model:[@post,@user_comment] do |f|%>
-    <%= f.text_field :name %>
-    <%= f.text_field :text %>
+    <p> 名前：<%= f.text_field :name %></p>
+    <p> コメント：<%= f.text_field :text %></p>
     <%= f.submit %>
   <% end %>
 <% else %>
   <%# Commentモデルへ投稿 %>
   <%= form_with model:[@post,@comment] do |f|%>
-    <%= f.text_field :name %>
-    <%= f.text_field :text %>
+    <p>名前：<%= f.text_field :name %></p>
+    <p> コメント：<%= f.text_field :text %></p>
     <%= f.submit %>
   <% end %>
 <% end %>

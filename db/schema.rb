@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_19_234344) do
+ActiveRecord::Schema.define(version: 2022_05_21_113450) do
 
   create_table "comments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2022_05_19_234344) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "guestcomment_to_userposts", charset: "utf8mb4", force: :cascade do |t|
+    t.string "text"
+    t.string "name"
+    t.bigint "user_post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_post_id"], name: "index_guestcomment_to_userposts_on_user_post_id"
   end
 
   create_table "posts", charset: "utf8mb4", force: :cascade do |t|
@@ -36,6 +45,7 @@ ActiveRecord::Schema.define(version: 2022_05_19_234344) do
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["post_id"], name: "index_user_comments_on_post_id"
     t.index ["user_id"], name: "index_user_comments_on_user_id"
   end
@@ -64,6 +74,7 @@ ActiveRecord::Schema.define(version: 2022_05_19_234344) do
   end
 
   add_foreign_key "comments", "posts"
+  add_foreign_key "guestcomment_to_userposts", "user_posts"
   add_foreign_key "user_comments", "posts"
   add_foreign_key "user_comments", "users"
   add_foreign_key "user_posts", "users"

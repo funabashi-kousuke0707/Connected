@@ -1,0 +1,8 @@
+<h1>UserPost#show</h1>
+<%= link_to root_path do %> ホーム <% end %>
+
+<%= form_with model:[@user_post,@guestcomment_to_userpost] do |f|%>
+    <p> 名前：<%= f.text_field :name %></p>
+    <p> コメント：<%= f.text_field :text %></p>
+    <%= f.submit %>
+  <% end %>

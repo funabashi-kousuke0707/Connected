@@ -4,11 +4,10 @@ class UserPostsController < ApplicationController
     @user = current_user.name
   end
 
-  # def show
-  #   @user_post = UserPost.find(params[:id])
-  #   @user_comment = UserComment.new(user_post_params)
-  #   # @comments = @post.comment
-  # end
+  def show
+    @user_post = UserPost.find(params[:id])
+    @guestcomment_to_userpost = GuestcommentToUserpost.new
+  end
 
   def create
     UserPost.create(user_post_params)
@@ -23,6 +22,7 @@ class UserPostsController < ApplicationController
 
 
   private
+    # ログインユーザーが新規投稿する際にcreateアクションで使用
     def user_post_params
       params.require(:user_post).permit(:title,:text,:name).merge(user_id: current_user.id)
     end

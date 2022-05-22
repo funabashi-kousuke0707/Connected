@@ -1,11 +1,12 @@
 class UserPostsController < ApplicationController
   def new
     @user_post = UserPost.new
-    @user = current_user.name
+    @user = current_user
   end
 
   def show
     @user_post = UserPost.find(params[:id])
+    @user = current_user
     @guestcomment_to_userpost = GuestcommentToUserpost.new
     @usercomment_to_userpost  = UsercommentToUserpost.new
     # @user_postに紐づいたコメントを格納

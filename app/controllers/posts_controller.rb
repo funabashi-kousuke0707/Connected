@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = current_user
     @comment = Comment.new
     @user_comment = UserComment.new
     # Postに紐づいたゲストユーザーのコメント(Comment)とPostに紐づいたログインユーザーのコメント(UserComment)のオブジェクトを投稿順に並び替えて格納

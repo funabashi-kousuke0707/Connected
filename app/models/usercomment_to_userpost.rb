@@ -1,0 +1,2 @@
+class UsercommentToUserpost < ApplicationRecord
+end

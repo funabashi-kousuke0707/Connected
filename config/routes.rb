@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "posts#index"
   resources :user_posts do
     resources :guestcomment_to_userposts, only:[:create]
+    resources :usercomment_to_userposts,  only:[:create]
   end
   resources :posts do
     resources :comments, only:[:create]

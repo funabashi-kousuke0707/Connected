@@ -1,12 +1,21 @@
 <h1>UserPost#show</h1>
 <%= link_to root_path do %> ホーム <% end %>
 
-<%= form_with model:[@user_post,@guestcomment_to_userpost] do |f|%>
-  <p> 名前：<%= f.text_field :name %></p>
-  <p> コメント：<%= f.text_field :text %></p>
-  <%= f.submit %>
+<%# ログインの有無でコメントの保存先が変わる機構 %>
+<% if user_signed_in? %>
+  <%# コメントにuser_idを紐づけることができるUserCommentモデルへ投稿 %>
+  <%= form_with model:[@user_post,@usercomment_to_userpost] do |f|%>
+    <p> 名前：<%= f.text_field :name %></p>
+    <p> コメント：<%= f.text_field :text %></p>
+    <%= f.submit %>
+  <% end %>
+<% else %>
+  <%# Commentモデルへ投稿 %>
+  <%= form_with model:[@user_post,@guestcomment_to_userpost] do |f|%>
+    <p>名前：<%= f.text_field :name %></p>
+    <p> コメント：<%= f.text_field :text %></p>
+    <%= f.submit %>
+  <% end %>
 <% end %>
+<%# end %>
 
-<% @user_posts.each do |user_post|%>
-  <p><%= user_post.text %></p>
-<% end %>

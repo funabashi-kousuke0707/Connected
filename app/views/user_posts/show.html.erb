@@ -2,7 +2,11 @@
 <%= link_to root_path do %> ホーム <% end %>
 
 <%= form_with model:[@user_post,@guestcomment_to_userpost] do |f|%>
-    <p> 名前：<%= f.text_field :name %></p>
-    <p> コメント：<%= f.text_field :text %></p>
-    <%= f.submit %>
-  <% end %>
+  <p> 名前：<%= f.text_field :name %></p>
+  <p> コメント：<%= f.text_field :text %></p>
+  <%= f.submit %>
+<% end %>
+
+<% @user_posts.each do |user_post|%>
+  <p><%= user_post.text %></p>
+<% end %>

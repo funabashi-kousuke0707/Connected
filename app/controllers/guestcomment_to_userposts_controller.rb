@@ -2,7 +2,7 @@ class GuestcommentToUserpostsController < ApplicationController
   def create
     @user_post = UserPost.find(params[:user_post_id])
     @guestcomment_to_userpost = GuestcommentToUserpost.create(guestcomment_to_userpost_params)
-    redirect_to root_path
+    redirect_to user_post_path(@guestcomment_to_userpost.user_post)
   end
 
   private 

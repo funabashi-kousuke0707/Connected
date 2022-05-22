@@ -6,6 +6,7 @@ class UserPostsController < ApplicationController
 
   def show
     @user_post = UserPost.find(params[:id])
+    @user_posts = @user_post.guestcomment_to_userpost
     @guestcomment_to_userpost = GuestcommentToUserpost.new
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_21_113450) do
+ActiveRecord::Schema.define(version: 2022_05_22_100855) do
 
   create_table "comments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -60,6 +60,17 @@ ActiveRecord::Schema.define(version: 2022_05_21_113450) do
     t.index ["user_id"], name: "index_user_posts_on_user_id"
   end
 
+  create_table "usercomment_to_userposts", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.text "text"
+    t.bigint "user_post_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_usercomment_to_userposts_on_user_id"
+    t.index ["user_post_id"], name: "index_usercomment_to_userposts_on_user_post_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "email", default: "", null: false
@@ -78,4 +89,6 @@ ActiveRecord::Schema.define(version: 2022_05_21_113450) do
   add_foreign_key "user_comments", "posts"
   add_foreign_key "user_comments", "users"
   add_foreign_key "user_posts", "users"
+  add_foreign_key "usercomment_to_userposts", "user_posts"
+  add_foreign_key "usercomment_to_userposts", "users"
 end
